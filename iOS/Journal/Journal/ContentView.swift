@@ -44,7 +44,7 @@ struct ContentView: View {
                     }
                     }
                     
-                    EntriesView().tabItem {
+                    WriteView().tabItem {
                         VStack {
                             Text("write")
                             Image(systemName: "pencil.and.outline")
