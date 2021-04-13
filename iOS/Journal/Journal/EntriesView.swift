@@ -47,8 +47,9 @@ struct EntriesView: View {
             )
         .navigationTitle("My story")
         //.background(Color.green)
-        
+    
         }
+        .listStyle(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=List Style@*/DefaultListStyle()/*@END_MENU_TOKEN@*/)
     }
     
     

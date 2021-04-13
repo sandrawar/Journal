@@ -44,7 +44,7 @@ struct ContentView: View {
                     }
                     }
                     
-                    EntriesView().tabItem {
+                    WriteView().tabItem {
                         VStack {
                             Text("write")
                             Image(systemName: "pencil.and.outline")
@@ -78,6 +78,8 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            
+            
             
     }
 }
