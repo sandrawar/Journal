@@ -2,8 +2,6 @@
 //  EntriesView.swift
 //  Journal
 //
-//  Created by Ariel-M-01 on 11/04/2021.
-//
 
 import Foundation
 import SwiftUI
@@ -15,26 +13,19 @@ struct EntriesView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Entry.date, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var items: FetchedResults<Entry>
     
-    let entries = [Entry(date: Date(),text: "1",title: "First",inspiration: nil),
-                 Entry(date: Date(),text: "2",title: "Second",inspiration: nil),
-                 Entry(date: Date(),text: "3",title: "Third",inspiration: nil)]
-
     var body: some View {
         NavigationView{
             List {
-                //ForEach(items) { item in
-                   //Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    //Text("Item at \(Item(timestamp: Date(), date: Date(),text: "1",title: "First",inspiration: nil), formatter: itemFormatter)")
-                //.onDelete(perform: deleteItems)
-                ForEach (entries, id: \.title) { entry in
-                    NavigationLink(entry.title, destination: Text(entry.text))
+                ForEach(items) { item in
+                    Text("\(item.title!): \(item.date!, formatter: itemFormatter)")
+                //ForEach (entries, id: \.title) { entry in
+                //    NavigationLink(entry.title, destination: Text(entry.text))
                 }.onDelete(perform: deleteItems)
             }
-            //.background(Color.red)
 
     
             .toolbar (content:{
@@ -46,7 +37,6 @@ struct EntriesView: View {
                 }
             )
         .navigationTitle("My story")
-        //.background(Color.green)
     
         }
         .listStyle(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=List Style@*/DefaultListStyle()/*@END_MENU_TOKEN@*/)
@@ -56,9 +46,9 @@ struct EntriesView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-            //newItem.date = Date()
+            let newItem = Entry(context: viewContext)
+            newItem.date = Date()
+            newItem.title = "title"
 
             do {
                 try viewContext.save()
@@ -89,15 +79,14 @@ struct EntriesView: View {
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
+    formatter.dateStyle = .long 
+    formatter.timeStyle = .none
     return formatter
 }()
 
 struct EntriesView_Previews: PreviewProvider {
     static var previews: some View {
-        //EntriesView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-        EntriesView()
+        EntriesView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 

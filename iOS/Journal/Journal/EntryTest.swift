@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Entry {
+struct EntryTest {
     let date: Date
     var text: String
     let title: String
