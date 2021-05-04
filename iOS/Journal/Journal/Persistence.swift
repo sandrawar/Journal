@@ -17,6 +17,7 @@ struct PersistenceController {
             let newItem = Entry(context: viewContext)
             newItem.date = Date()
             newItem.title = "T \(i)"
+            newItem.text = "\(i)"
         }
         do {
             try viewContext.save()

@@ -21,7 +21,7 @@ struct EntriesView: View {
         NavigationView{
             List {
                 ForEach(items) { item in
-                    Text("\(item.title!): \(item.date!, formatter: itemFormatter)")
+                    NavigationLink("\(item.title!): \(item.date!, formatter: itemFormatter)", destination:Text(item.text!))
                 //ForEach (entries, id: \.title) { entry in
                 //    NavigationLink(entry.title, destination: Text(entry.text))
                 }.onDelete(perform: deleteItems)
@@ -49,6 +49,7 @@ struct EntriesView: View {
             let newItem = Entry(context: viewContext)
             newItem.date = Date()
             newItem.title = "title"
+            newItem.text = "text"
 
             do {
                 try viewContext.save()
