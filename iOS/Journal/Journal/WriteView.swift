@@ -14,32 +14,31 @@ import CoreData
 struct WriteView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State var title: String = ""
-    @State var inspiration: String = ""
     @State var text: String = ""
     @State var date: Date = Date()
-    @State var saved: Bool = false
+    //@State private var goToEntriesView = false
     var body: some View {
         VStack {
-            //Form {
-              //  TextField(<#T##title: StringProtocol##StringProtocol#>, value: <#T##Binding<T>#>, formatter: <#T##Formatter#>)
-            //}
             NavigationView {
                 Form {
                     Section(header: Text("Create your new journal entry").foregroundColor(Color("HeadersColor"))
-                        .font(/*@START_MENU_TOKEN@*/.title3/*@END_MENU_TOKEN@*/))
-                        {
+                                .font(.title3))
+                    {
                         TextField("Title", text: $title)
-                        TextField("Inspiration", text: $inspiration)
                         TextField("Text", text: $text)
                     }
-                    DatePicker(selection: $date, label: { /*@START_MENU_TOKEN@*/Text("Date")/*@END_MENU_TOKEN@*/ })
+                    Section(){
+                        DatePicker(selection: $date, label: { Text("Date") })
+                    }
                     Button(action: {
                         let newItem = Entry(context: viewContext)
                         newItem.date = date
                         newItem.title = title
                         newItem.text = text
-                        newItem.inspiration = inspiration
-
+                        title = ""
+                        text = ""
+                        date = Date()
+                        
                         do {
                             try viewContext.save()
                         } catch {
@@ -48,22 +47,26 @@ struct WriteView: View {
                             let nsError = error as NSError
                             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                         }
-                        self.saved = true
+                        //self.goToEntriesView = true
                     }, label: {
                         HStack {
                             Spacer()
-                            Text(saved ? "Saved" : "Save")
+                            Text("Save")
                             Spacer()
                         }
-                    }).disabled(saved)
-                }.navigationBarTitle("Write")
-                
+                    })
+                    .disabled(title.isEmpty || text.isEmpty)
+                }
+                .navigationTitle("Write")
+                //.background(
+                //    NavigationLink(destination: EntriesView(), isActive: $goToEntriesView) { }
+                //    .hidden()
+                //)
             }
+             
         }
     }
 }
-
-
 
 struct WriteView_Previews: PreviewProvider {
     static var previews: some View {

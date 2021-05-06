@@ -22,46 +22,14 @@ struct EntriesView: View {
             List {
                 ForEach(items) { item in
                     NavigationLink("\(item.title!): \(item.date!, formatter: itemFormatter)", destination:Text(item.text!))
-                //ForEach (entries, id: \.title) { entry in
-                //    NavigationLink(entry.title, destination: Text(entry.text))
                 }.onDelete(perform: deleteItems)
             }
-
-    
-            .toolbar (content:{
-                ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing){
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-                }
-            )
-        .navigationTitle("My story")
-    
-        }
-        .listStyle(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=List Style@*/DefaultListStyle()/*@END_MENU_TOKEN@*/)
-    }
-    
-    
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Entry(context: viewContext)
-            newItem.date = Date()
-            newItem.title = "title"
-            newItem.text = "text"
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            .navigationTitle("My story")
+            .listStyle(GroupedListStyle())
+            .accessibilityScrollAction { edge in /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Code@*/ /*@END_MENU_TOKEN@*/  }
         }
     }
-
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)

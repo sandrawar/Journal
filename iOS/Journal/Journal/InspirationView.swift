@@ -75,39 +75,37 @@ struct InspirationView: View {
     "If you could invite five people, living or dead, to dinner at your house one night, who would you choose, and what would you cook them?",
     "Think about the most important person in your life. How does he or she make you feel?"]
     var body: some View {
-        SwiftUI.NavigationView{
+        NavigationView{
             List {
                 Section(header: InspirationHeader(symbol: "heart", name: "Understand Yourself")) {
                     ForEach (understandYourselfInspirations, id: \.self) { inspiration in
-                    NavigationLink(inspiration, destination: WriteView())
+                        NavigationLink(inspiration, destination: WriteInspiredView(inspiration: inspiration))
                     }
                 }
                 Section(header: InspirationHeader(symbol: "leaf", name: "Your Grow")) {
                     ForEach (yourGrow, id: \.self) { inspiration in
-                    NavigationLink(inspiration, destination: WriteView())
-                    }
+                        NavigationLink(inspiration, destination: WriteInspiredView(inspiration: inspiration))
+                   }
                 }
                 Section(header: InspirationHeader(symbol: "tornado", name: "Find Tour Balance")) {
                     ForEach (findYourBalance, id: \.self) { inspiration in
-                    NavigationLink(inspiration, destination: WriteView())
-                    }
+                        NavigationLink(inspiration, destination: WriteInspiredView(inspiration: inspiration))
+                   }
                 }
                 Section(header: InspirationHeader(symbol: "person.2", name: "Relationships With Others")) {
                     ForEach (relationshipsWithOthers, id: \.self) { inspiration in
-                    NavigationLink(inspiration, destination: WriteView())
+                        NavigationLink(inspiration, destination: WriteInspiredView(inspiration: inspiration))
                     }
                 }
             }
-            .listStyle(GroupedListStyle())
             .navigationTitle("Your prompts")
-        
-        }
-        .accessibilityScrollAction { edge in
-            /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Code@*/ /*@END_MENU_TOKEN@*/
+            .listStyle(GroupedListStyle())
+            .accessibilityScrollAction { edge in /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Code@*/ /*@END_MENU_TOKEN@*/  }
         }
     }
     
-    }
+}
+
 struct InspirationHeader: View {
     let symbol: String
     let name: String
@@ -124,7 +122,8 @@ struct InspirationHeader: View {
 struct InspirationView_Previews: PreviewProvider {
     static var previews: some View {
         InspirationView()
-            .preferredColorScheme(.light)
+            .preferredColorScheme(.dark)
+             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 
