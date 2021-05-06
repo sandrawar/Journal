@@ -12,9 +12,11 @@ import CoreData
 
 
 struct WriteView: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @State var title: String = ""
     @State var inspiration: String = ""
     @State var text: String = ""
+    @State var date: Date = Date()
     @State var saved: Bool = false
     var body: some View {
         VStack {
@@ -30,8 +32,22 @@ struct WriteView: View {
                         TextField("Inspiration", text: $inspiration)
                         TextField("Text", text: $text)
                     }
-                    DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, label: { /*@START_MENU_TOKEN@*/Text("Date")/*@END_MENU_TOKEN@*/ })
+                    DatePicker(selection: $date, label: { /*@START_MENU_TOKEN@*/Text("Date")/*@END_MENU_TOKEN@*/ })
                     Button(action: {
+                        let newItem = Entry(context: viewContext)
+                        newItem.date = date
+                        newItem.title = title
+                        newItem.text = text
+                        newItem.inspiration = inspiration
+
+                        do {
+                            try viewContext.save()
+                        } catch {
+                            // Replace this implementation with code to handle the error appropriately.
+                            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                            let nsError = error as NSError
+                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                        }
                         self.saved = true
                     }, label: {
                         HStack {
@@ -51,6 +67,6 @@ struct WriteView: View {
 
 struct WriteView_Previews: PreviewProvider {
     static var previews: some View {
-        WriteView()
+        WriteView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
