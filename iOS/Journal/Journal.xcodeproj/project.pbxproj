@@ -67,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				9BD99D6F262213CD00C207C1 /* JournalApp.swift */,
+				EC7AD59426446AE900DE2FD3 /* HomeView.swift */,
 				9BD99D71262213CD00C207C1 /* ContentView.swift */,
 				9B5EA2682622C03500B2894E /* EntriesView.swift */,
 				9B503A91262569F60018733F /* WriteView.swift */,
@@ -77,7 +78,6 @@
 				9BD99D7D262213CE00C207C1 /* Info.plist */,
 				9BD99D7A262213CE00C207C1 /* Journal.xcdatamodeld */,
 				9BD99D75262213CE00C207C1 /* Preview Content */,
-				EC7AD59426446AE900DE2FD3 /* HomeView.swift */,
 			);
 			path = Journal;
 			sourceTree = "<group>";

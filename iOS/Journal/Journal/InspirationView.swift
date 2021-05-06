@@ -1,15 +1,11 @@
 //
 //  InspirationView.swift
 //  Journal
-//
-//  Created by Ariel-M-01 on 12/04/2021.
-//
+
 
 import Foundation
 import SwiftUI
 import CoreData
-
-
 
 struct InspirationView: View {
     
@@ -103,7 +99,6 @@ struct InspirationView: View {
             .accessibilityScrollAction { edge in /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Code@*/ /*@END_MENU_TOKEN@*/  }
         }
     }
-    
 }
 
 struct InspirationHeader: View {
@@ -123,7 +118,7 @@ struct InspirationView_Previews: PreviewProvider {
     static var previews: some View {
         InspirationView()
             .preferredColorScheme(.dark)
-             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 

@@ -3,7 +3,6 @@
 //  Journal
 //
 
-//
 
 import Foundation
 import SwiftUI
@@ -28,7 +27,7 @@ struct HomeView: View {
     }
 }
 
-struct WHomeView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
     }

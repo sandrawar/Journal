@@ -1,5 +1,5 @@
 //
-//  WriteView.swift
+//  WriteInspiredView.swift
 //  Journal
 //
 
@@ -15,7 +15,7 @@ struct WriteInspiredView: View {
     @State var date: Date = Date()
     //@State private var goToEntriesView = false
     var body: some View {
-         NavigationView {
+        NavigationView {
             Form {
                 Section(header: Text("Create your new journal entry").foregroundColor(Color("HeadersColor"))
                             .font(.title3))

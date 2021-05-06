@@ -18,7 +18,7 @@ struct EntriesView: View {
     private var items: FetchedResults<Entry>
     
     var body: some View {
-        NavigationView{
+         NavigationView{
             List {
                 ForEach(items) { item in
                     NavigationLink("\(item.title!): \(item.date!, formatter: itemFormatter)", destination:Text(item.text!))
@@ -28,7 +28,7 @@ struct EntriesView: View {
             .listStyle(GroupedListStyle())
             .accessibilityScrollAction { edge in /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Code@*/ /*@END_MENU_TOKEN@*/  }
         }
-    }
+     }
     
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
