@@ -15,7 +15,7 @@ struct ContentView: View {
             HomeView()
                 .tabItem {
                     VStack {
-                        Text("Home")
+                        Text("tabitem-home")
                         Image(systemName: "house")
                     }
                 }
@@ -61,6 +61,13 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-            ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        Group {
+            ContentView()
+                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+                .environment(\.locale, .init(identifier: "en-US"))
+            ContentView()
+                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+                .environment(\.locale, .init(identifier: "pl-PL"))
+       }
     }
 }

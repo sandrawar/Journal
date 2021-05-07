@@ -13,7 +13,11 @@ struct SettingsView: View {
         Text("Settings").fontWeight(.bold)
             .font(.largeTitle)
         List {
-            Text("Colour Schema").fontWeight(.bold);                Button(action: {
+            HStack {
+                Image(systemName: "paintpalette")
+                Text("Colour Schema").fontWeight(.bold)
+            }
+            Button(action: {
                 preferredColorScheme = .light
             }) {
                 HStack {
@@ -34,6 +38,14 @@ struct SettingsView: View {
                     if preferredColorScheme == .dark {
                         selectedImage
                     }
+                }
+            }
+            Spacer()
+            Link(destination: URL(string: UIApplication.openSettingsURLString)!){
+                HStack {
+                    Image(systemName: "quote.bubble")
+                    Text("Language")
+                        .fontWeight(.bold)
                 }
             }
         }
