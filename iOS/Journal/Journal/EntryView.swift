@@ -26,6 +26,7 @@ struct EntryView: View {
             .foregroundColor(Color("HeadersColor"))
             .multilineTextAlignment(.center)
             .padding()
+            .accessibilityScrollAction { edge in /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Code@*/ /*@END_MENU_TOKEN@*/  }
         }
 }
 struct EntryView_Previews: PreviewProvider {

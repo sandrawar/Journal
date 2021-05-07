@@ -19,14 +19,14 @@ struct WriteView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Create your new journal entry").foregroundColor(Color("HeadersColor"))
+                Section(header: Text("create-text").foregroundColor(Color("HeadersColor"))
                             .font(.title3))
                 {
-                    TextField("Title", text: $title)
-                    TextField("Text", text: $text)
+                    TextField("form-title", text: $title)
+                    TextField("form-text", text: $text)
                 }
                 Section(){
-                    DatePicker(selection: $date, label: { Text("Date") })
+                    DatePicker(selection: $date, label: { Text("form-date") })
                 }
                 Button(action: {
                     let newItem = Entry(context: viewContext)
@@ -50,13 +50,13 @@ struct WriteView: View {
                 }, label: {
                     HStack {
                         Spacer()
-                        Text("Save")
+                        Text("save-button")
                         Spacer()
                     }
                 })
                 .disabled(title.isEmpty || text.isEmpty)
             }
-            .navigationTitle("Write")
+            .navigationTitle("view-title-write")
             //.background(
             //    NavigationLink(destination: EntriesView(), isActive: $goToEntriesView) { }
             //    .hidden()

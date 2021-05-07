@@ -10,18 +10,18 @@ struct SettingsView: View {
     @State var preferredColorScheme: ColorScheme? = nil
     var body: some View {
     VStack {
-        Text("Settings").fontWeight(.bold)
+        Text("settings").fontWeight(.bold)
             .font(.largeTitle)
         List {
             HStack {
                 Image(systemName: "paintpalette")
-                Text("Colour Schema").fontWeight(.bold)
+                Text("settings-colour").fontWeight(.bold)
             }
             Button(action: {
                 preferredColorScheme = .light
             }) {
                 HStack {
-                    Text("Light")
+                    Text("light-schema")
                     Spacer()
                     if preferredColorScheme == .light {
                         selectedImage
@@ -33,7 +33,7 @@ struct SettingsView: View {
                 preferredColorScheme = .dark
             }) {
                 HStack {
-                    Text("Dark")
+                    Text("dark-schema")
                     Spacer()
                     if preferredColorScheme == .dark {
                         selectedImage
@@ -44,14 +44,14 @@ struct SettingsView: View {
             Link(destination: URL(string: UIApplication.openSettingsURLString)!){
                 HStack {
                     Image(systemName: "quote.bubble")
-                    Text("Language")
+                    Text("language-settings")
                         .fontWeight(.bold)
                 }
             }
         }
         .listStyle(InsetGroupedListStyle())
         .preferredColorScheme(preferredColorScheme)
-        .navigationBarTitle("ColorScheme Test")
+        .navigationBarTitle("settings")
     }
     }
     var selectedImage: some View {

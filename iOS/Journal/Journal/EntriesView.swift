@@ -24,7 +24,7 @@ struct EntriesView: View {
                     NavigationLink("\(item.title!): \(item.date!, formatter: itemFormatter)", destination: EntryView(title:item.title!, text:item.text ?? "", inspiration:item.inspiration ?? "", date:item.date!))
                 }.onDelete(perform: deleteItems)
             }
-            .navigationTitle("My story")
+            .navigationTitle("entries-title")
             .listStyle(GroupedListStyle())
             .accessibilityScrollAction { edge in /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Code@*/ /*@END_MENU_TOKEN@*/  }
         }

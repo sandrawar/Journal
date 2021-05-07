@@ -23,7 +23,7 @@ struct ContentView: View {
             EntriesView()
                 .tabItem {
                     VStack {
-                        Text("read")
+                        Text("tabitem-read")
                         Image(systemName: "books.vertical")
                     }
                 }
@@ -31,7 +31,7 @@ struct ContentView: View {
             WriteView(tabSelection: $tabSelection)
                 .tabItem {
                     VStack {
-                        Text("write")
+                        Text("tabitem-write")
                         Image(systemName: "pencil.and.outline")
                     }
                 }
@@ -39,7 +39,7 @@ struct ContentView: View {
             InspirationView()
                 .tabItem {
                     VStack {
-                        Text("Find inspiration")
+                        Text("tabitem-find-inspiration")
                         Image(systemName: "lasso.sparkles")
                     }
                 }
@@ -47,7 +47,7 @@ struct ContentView: View {
             SettingsView()
                 .tabItem {
                     VStack {
-                        Text("Settings")
+                        Text("tabitem-settings")
                         Image(systemName: "gearshape.2")
                     }
                 }

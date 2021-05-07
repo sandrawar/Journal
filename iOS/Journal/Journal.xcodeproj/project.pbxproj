@@ -39,7 +39,6 @@
 		EC591A6126455504000B6618 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		EC591A632645589A000B6618 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EC591A682645B56B000B6618 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		EC591A6A2645B726000B6618 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EC7AD59426446AE900DE2FD3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,7 +191,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				EC591A682645B56B000B6618 /* en */,
-				EC591A6A2645B726000B6618 /* pl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
