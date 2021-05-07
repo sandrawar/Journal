@@ -15,6 +15,7 @@ struct WriteView: View {
     @State var text: String = ""
     @State var date: Date = Date()
     //@State private var goToEntriesView = false
+    @Binding var tabSelection: Int
     var body: some View {
         NavigationView {
             Form {
@@ -44,6 +45,7 @@ struct WriteView: View {
                         let nsError = error as NSError
                         fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                     }
+                    self.tabSelection = 2
                     //self.goToEntriesView = true
                 }, label: {
                     HStack {
@@ -64,7 +66,8 @@ struct WriteView: View {
 }
 
 struct WriteView_Previews: PreviewProvider {
+    @State static var tabSelection = 1
     static var previews: some View {
-        WriteView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        WriteView(tabSelection: $tabSelection).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
