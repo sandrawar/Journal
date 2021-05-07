@@ -21,7 +21,7 @@ struct EntriesView: View {
          NavigationView{
             List {
                 ForEach(items) { item in
-                    NavigationLink("\(item.title!): \(item.date!, formatter: itemFormatter)", destination:Text(item.text!))
+                    NavigationLink("\(item.title!): \(item.date!, formatter: itemFormatter)", destination: EntryView(title:item.title!, text:item.text ?? "", inspiration:item.inspiration ?? "", date:item.date!))
                 }.onDelete(perform: deleteItems)
             }
             .navigationTitle("My story")

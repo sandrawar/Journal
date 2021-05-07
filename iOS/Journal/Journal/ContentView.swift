@@ -36,7 +36,7 @@ struct ContentView: View {
                     Image(systemName: "lasso.sparkles")
                 }
             }
-            ColorPicker("Alignment Guides", selection: $bgColor).tabItem {
+            SettingsView().tabItem {
                 VStack {
                     Text("Settings")
                     Image(systemName: "gearshape.2")

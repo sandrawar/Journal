@@ -70,27 +70,30 @@ struct InspirationView: View {
     "What does heroic mean to you, and who are your biggest heroes?",
     "If you could invite five people, living or dead, to dinner at your house one night, who would you choose, and what would you cook them?",
     "Think about the most important person in your life. How does he or she make you feel?"]
+    
+    @State private var writeInspired = false
+    
     var body: some View {
         NavigationView{
             List {
                 Section(header: InspirationHeader(symbol: "heart", name: "Understand Yourself")) {
                     ForEach (understandYourselfInspirations, id: \.self) { inspiration in
-                        NavigationLink(inspiration, destination: WriteInspiredView(inspiration: inspiration))
+                        NavigationLink(inspiration, destination: WriteInspiredView(inspiration: inspiration, showSelf: $writeInspired), isActive: $writeInspired)
                     }
                 }
                 Section(header: InspirationHeader(symbol: "leaf", name: "Your Grow")) {
                     ForEach (yourGrow, id: \.self) { inspiration in
-                        NavigationLink(inspiration, destination: WriteInspiredView(inspiration: inspiration))
+                        NavigationLink(inspiration, destination: WriteInspiredView(inspiration: inspiration, showSelf: $writeInspired), isActive: $writeInspired)
                    }
                 }
                 Section(header: InspirationHeader(symbol: "tornado", name: "Find Tour Balance")) {
                     ForEach (findYourBalance, id: \.self) { inspiration in
-                        NavigationLink(inspiration, destination: WriteInspiredView(inspiration: inspiration))
+                        NavigationLink(inspiration, destination: WriteInspiredView(inspiration: inspiration, showSelf: $writeInspired), isActive: $writeInspired)
                    }
                 }
                 Section(header: InspirationHeader(symbol: "person.2", name: "Relationships With Others")) {
                     ForEach (relationshipsWithOthers, id: \.self) { inspiration in
-                        NavigationLink(inspiration, destination: WriteInspiredView(inspiration: inspiration))
+                        NavigationLink(inspiration, destination: WriteInspiredView(inspiration: inspiration, showSelf: $writeInspired), isActive: $writeInspired)
                     }
                 }
             }

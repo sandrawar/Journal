@@ -13,7 +13,8 @@ struct WriteInspiredView: View {
     @State var inspiration: String = ""
     @State var text: String = ""
     @State var date: Date = Date()
-    //@State private var goToEntriesView = false
+    @Binding var showSelf: Bool
+     //@State private var goToEntriesView = false
     var body: some View {
         NavigationView {
             Form {
@@ -21,7 +22,7 @@ struct WriteInspiredView: View {
                             .font(.title3))
                 {
                     TextField("Title", text: $title)
-                    TextField("Inspiration", text: $inspiration)
+                    Text(inspiration)
                     TextField("Text", text: $text)
                 }
                 Section(){
@@ -46,6 +47,7 @@ struct WriteInspiredView: View {
                         let nsError = error as NSError
                         fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                     }
+                    self.showSelf = false
                     //self.goToEntriesView = true
                 }, label: {
                     HStack {
@@ -68,7 +70,8 @@ struct WriteInspiredView: View {
 
 
 struct WriteInspiredView_Previews: PreviewProvider {
+    @State static var showSelf = true
     static var previews: some View {
-        WriteInspiredView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        WriteInspiredView(showSelf: $showSelf).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
