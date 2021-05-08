@@ -9,8 +9,6 @@ import CoreData
 
 struct InspirationView: View {
     
-    //https://thoughtcatalog.com/
-    
     let understandYourselfInspirations = [
         "insp-u01",
         "insp-u02",
@@ -75,6 +73,7 @@ struct InspirationView: View {
         "insp-r03",
         "insp-r04",
         "insp-r05",
+        "insp-r06",
     ]
     
     @State private var writeInspired = false
