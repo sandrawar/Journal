@@ -82,28 +82,28 @@ struct InspirationView: View {
     var body: some View {
         NavigationView{
             List {
-                Section(header: InspirationHeader(symbol: "heart", name: "insp-sect-u")) {
+                Section(header: InspirationHeader(symbol: "heart", name: LocalizedStringKey("insp-sect-u"))) {
                     ForEach (understandYourselfInspirations, id: \.self) { inspiration in
                         NavigationLink(LocalizedStringKey(inspiration), destination: WriteInspiredView(inspiration: inspiration, showSelf: $writeInspired), isActive: $writeInspired)
                     }
                 }
-                Section(header: InspirationHeader(symbol: "leaf", name: "insp-sect-g")) {
+                Section(header: InspirationHeader(symbol: "leaf", name: LocalizedStringKey("insp-sect-g"))) {
                     ForEach (yourGrowth, id: \.self) { inspiration in
                         NavigationLink(LocalizedStringKey(inspiration), destination: WriteInspiredView(inspiration: inspiration, showSelf: $writeInspired), isActive: $writeInspired)
                    }
                 }
-                Section(header: InspirationHeader(symbol: "tornado", name:"insp-sect-b" )) {
+                Section(header: InspirationHeader(symbol: "tornado", name: LocalizedStringKey("insp-sect-b" ))) {
                     ForEach (findYourBalance, id: \.self) { inspiration in
                         NavigationLink(LocalizedStringKey(inspiration), destination: WriteInspiredView(inspiration: inspiration, showSelf: $writeInspired), isActive: $writeInspired)
                    }
                 }
-                Section(header: InspirationHeader(symbol: "person.2", name: "insp-sect-r")) {
+                Section(header: InspirationHeader(symbol: "person.2", name: LocalizedStringKey("insp-sect-r"))) {
                     ForEach (relationshipsWithOthers, id: \.self) { inspiration in
                         NavigationLink(LocalizedStringKey(inspiration), destination: WriteInspiredView(inspiration: inspiration, showSelf: $writeInspired), isActive: $writeInspired)
                     }
                 }
             }
-            .navigationTitle("Your prompts")
+            .navigationTitle("your-prompts")
             .listStyle(GroupedListStyle())
             .accessibilityScrollAction { edge in /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Code@*/ /*@END_MENU_TOKEN@*/  }
         }
@@ -112,7 +112,7 @@ struct InspirationView: View {
 
 struct InspirationHeader: View {
     let symbol: String
-    let name: String
+    let name: LocalizedStringKey
     var body: some View {
         HStack {
             Image(systemName: symbol)

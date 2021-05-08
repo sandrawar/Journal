@@ -4,5 +4,91 @@
  
 */
 
-"tabitem-home"="Start";
+"tabitem-home"="Home";
+"tabitem-read"="read";
+"tabitem-write"="write";
+"tabitem-find-inspiration"="Find inspiration";
+"tabitem-settings"="Settings";
+
+"home-quote"="\"Journaling is like whispering to one's self and listening at the same time.\"";
+"home-author"="- Mina Murray";
+"entries-title"="My story";
+"create-text"="Create your new journal entry";
+"form-title"="Title";
+"form-text"="Text";
+"form-date"="Date";
+"save-button"="Save";
+"view-title-write"="Write";
+"view-title-inspired-write"="Write";
+"settings-colour"="Colour Schema";
+"light-schema"="Light";
+"dark-schema"="Dark";
+"language-settings"="Language";
+"settings"="Settings";
+
+"your-prompts"="Your prompts";
+
+"insp-sect-u"="Understand Yourself";
+"insp-sect-g"="Your Growth";
+"insp-sect-b"="Find Tour Balance";
+"insp-sect-r"="Relationships With Others";
+
+"insp-u01"="Name the three biggest priorities in your life right now.";
+"insp-u02"="What are your biggest fears?";
+"insp-u03"="What would you do if you were granted three wishes?";
+"insp-u04"="Do you have a secret talent you are hiding?";
+"insp-u05"="What are you best at, and what do you love doing most, and how could you spend more time doing both?";
+"insp-u06"="What makes your heart sing loudest? What makes your heart beat strongest?";
+"insp-u07"="What scares you the most, and why? How can you use that fear to improve or learn or grow?";
+"insp-u08"="What are three things that you are really looking forward to the most?";
+"insp-u09"="What do you love most about yourself?";
+"insp-u10"="What would you truly lose, deep down, if you lost what you are most scared of losing?";
+"insp-u11"="What did you really love doing as a kid but don’t really do anymore? What is stopping you from doing it now, and what would happen if you did?";
+"insp-u12"="What makes you feel happy to be alive, and how can you make more of that every day?";
+"insp-u13"="What truth have you been refusing to admit to yourself and how could you face it?";
+"insp-u14"="What does your ideal day look like? Be specific.";
+"insp-u15"="What one event in your life has changed you the most?";
+"insp-u16"="If you could be president for one day, what would you do, and why?";
+"insp-u17"="Assuming your life is a story and you are the author, what does your happy ending look like?";
+"insp-u18"="What makes you the most angry, the most frustrated, the most annoyed, and why?";
+
+"insp-g01"="How have you grown this year?";
+"insp-g02"="What are the most important life lessons you have learned?";
+"insp-g03"="How do you define success, and how will you know when you have it?";
+"insp-g04"="Where do you see yourself in 3 months, 6 months, and 12 months? Be specific.";
+"insp-g05"="What have been the five best days of your life, and why?";
+"insp-g06"="What would you tell your five-year-old self?";
+"insp-g07"="If you could change one thing about yourself, what would it be and what’s stopping you from taking action?";
+"insp-g08"="What is the best advice you have ever been given?";
+"insp-g09"="What are five things you absolutely, positively, totally want to do before you die, and how can you do one of them THIS YEAR?";
+"insp-g10"="What about your life makes you the most proud?";
+"insp-g11"="When did you hurt most, and how has it helped you or taught you or improved you?";
+"insp-g12"="If you could, what is the one thing you would change about your past?";
+"insp-g13"="What three things could you give up that would give you more time, energy, and peace?";
+"insp-g14"="What advice would you give yourself five years ago?";
+"insp-g15"="If you found out that you were going to die tomorrow, what would be your three biggest regrets?";
+"insp-g16"="How can you improve the way you treat yourself and talk to yourself?";
+"insp-g17"="When was the last time you cried, and what did it teach you?";
+"insp-g18"="What is your personal mantra for this year? What one word best describes your best life moving forward?";
+"insp-g19"="What is something you have never done, but always wanted to do, and what is so important about this for you?";
+
+"insp-b01"="If you had a magic wand, and could wave away your problems, what would your life look like? What’s stopping you from being the wand?";
+"insp-b02"="If you were unapologetically and truly yourself, day in and day out, and if you fully accepted and loved yourself, what would change for you moving forward?";
+"insp-b03"="What do you believe that no longer serves you? What do you believe that might be holding you back?";
+"insp-b04"="What are the ten smallest, most minor, most insignificant things in your life that you are grateful for?";
+"insp-b05"="How would your life be different if you stopped living so much in the past and/or worrying so much about the future?";
+"insp-b06"="How would your life change if you were your own biggest fan and truly believed in yourself?";
+"insp-b07"="How do you deal with helplessness, with letting go, with release and surrender of expectations?";
+"insp-b08"="What are five things that you love most in the world?";
+"insp-b09"="Who do you admire most in this world, and why?";
+"insp-b10"="What does it mean to be good enough, and how do you know that you are?";
+"insp-b11"="What do you love most about your life?";
+"insp-b12"="When are you at your best, and how do you get back there when you feel unbalanced or unwell?";
+"insp-b13"="What are the five most important things in your life right now and how are you prioritizing them (or not)?";
+
+"insp-r01"="What does love mean to you?"; "Who do you need to forgive, and why, and what’s stopping you from doing it today?";
+"insp-r02"="Who do you care about most in the world, and what could you do today to make sure they know it?";
+"insp-r03"="What does heroic mean to you, and who are your biggest heroes?";
+"insp-r04"="If you could invite five people, living or dead, to dinner at your house one night, who would you choose, and what would you cook them?";
+"insp-r05"="Think about the most important person in your life. How does he or she make you feel?";
 
