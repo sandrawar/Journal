@@ -28,6 +28,10 @@
 
 "your-prompts"="Your prompts";
 
+"err-save-title"="Save failed";
+"err-save-text"="Try again";
+"err-save-btn"="OK";
+
 "insp-sect-u"="Understand Yourself";
 "insp-sect-g"="Your Growth";
 "insp-sect-b"="Find Tour Balance";

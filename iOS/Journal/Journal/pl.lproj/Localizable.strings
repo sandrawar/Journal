@@ -28,10 +28,15 @@
 
 "your-prompts"="Inspiracje";
 
+"err-save-title"="Błąd podczas zapisu";
+"err-save-text"="Spróbuj ponownie";
+"err-save-btn"="OK";
+
 "insp-sect-u"="Zrozum siebie";
 "insp-sect-g"="Twój rozwój";
 "insp-sect-b"="Znajdź rónowagę";
 "insp-sect-r"="Relacje z innymi";
+
 "insp-u01"="Wymień trzy największe priotytety w Twoim życiu.";
 "insp-u02"="Jakie są Twoje największe lęki?";
 "insp-u03"="Co byś zrobił, gdybyś miał zapewnione spełnienie trzech życzeń?";

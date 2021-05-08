@@ -8,8 +8,9 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    //@State private var bgColor = Color(.sRGB, red: 0.98, green: 0.9, blue: 0.2)
     @State private var tabSelection = 1
+    @ObservedObject var userSettings = UserSettings()
+
     var body: some View {
         TabView (selection: $tabSelection){
             HomeView()
@@ -44,7 +45,7 @@ struct ContentView: View {
                     }
                 }
                 .tag(4)
-            SettingsView()
+            SettingsView(userSettings: userSettings)
                 .tabItem {
                     VStack {
                         Text("tabitem-settings")
@@ -54,6 +55,7 @@ struct ContentView: View {
                 .tag(5)
         }
         .foregroundColor(.accentColor)
+        .preferredColorScheme(userSettings.colorScheme)
     }
 }
 
@@ -64,10 +66,10 @@ struct ContentView_Previews: PreviewProvider {
         Group {
             ContentView()
                 .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-                .environment(\.locale, .init(identifier: "en-US"))
+                .environment(\.locale, .init(identifier: "en"))
             ContentView()
                 .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-                .environment(\.locale, .init(identifier: "pl-PL"))
+                .environment(\.locale, .init(identifier: "pl"))
        }
     }
 }

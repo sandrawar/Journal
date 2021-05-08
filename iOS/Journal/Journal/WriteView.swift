@@ -6,16 +6,18 @@
 import Foundation
 import SwiftUI
 import CoreData
-
-
+import Combine
 
 struct WriteView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State var title: String = ""
     @State var text: String = ""
     @State var date: Date = Date()
-    //@State private var goToEntriesView = false
     @Binding var tabSelection: Int
+    @State private var showingAlert = false
+
+    let titleLimit = 60
+       
     var body: some View {
         NavigationView {
             Form {
@@ -23,7 +25,19 @@ struct WriteView: View {
                             .font(.title3))
                 {
                     TextField("form-title", text: $title)
-                    TextField("form-text", text: $text)
+                        .onReceive(Just(title)) { _ in limitText(titleLimit) }
+                    ZStack {
+                        Text(text).opacity(0).padding(.all, 8)
+                        if text.isEmpty {
+                            HStack{
+                                Text("form-text")
+                                    .opacity(0.6)
+                                    .foregroundColor(.gray)
+                                Spacer()
+                            }
+                        }
+                        TextEditor(text: $text)
+                    }
                 }
                 Section(){
                     DatePicker(selection: $date, label: { Text("form-date") })
@@ -39,14 +53,11 @@ struct WriteView: View {
                     
                     do {
                         try viewContext.save()
+                        self.tabSelection = 2
                     } catch {
-                        // Replace this implementation with code to handle the error appropriately.
-                        // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                        let nsError = error as NSError
-                        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                        viewContext.delete(newItem)
+                        showingAlert = true
                     }
-                    self.tabSelection = 2
-                    //self.goToEntriesView = true
                 }, label: {
                     HStack {
                         Spacer()
@@ -55,12 +66,18 @@ struct WriteView: View {
                     }
                 })
                 .disabled(title.isEmpty || text.isEmpty)
+                .alert(isPresented: $showingAlert){
+                    Alert(title: Text("err-save-title"), message: Text("err-save-text"), dismissButton: .default(Text("err-save-btn")))
+                }
             }
             .navigationTitle("view-title-write")
-            //.background(
-            //    NavigationLink(destination: EntriesView(), isActive: $goToEntriesView) { }
-            //    .hidden()
-            //)
+        }
+    }
+
+    //Function to keep text length in limits
+    func limitText(_ limit: Int) {
+        if title.count > limit {
+            title = String(title.prefix(limit))
         }
     }
 }
@@ -68,6 +85,6 @@ struct WriteView: View {
 struct WriteView_Previews: PreviewProvider {
     @State static var tabSelection = 1
     static var previews: some View {
-        WriteView(tabSelection: $tabSelection).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        WriteView(tabSelection: $tabSelection).preferredColorScheme(.dark).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

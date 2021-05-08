@@ -16,17 +16,21 @@ struct EntriesView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Entry.date, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Entry>
-    
+    @State private var showingAlert = false
+
     var body: some View {
          NavigationView{
             List {
-                ForEach(items) { item in
-                    NavigationLink("\(item.title!): \(item.date!, formatter: itemFormatter)", destination: EntryView(title:item.title!, text:item.text ?? "", inspiration:item.inspiration ?? "", date:item.date!))
+                ForEach(items) { entry in
+                    NavigationLink("\(entry.date!, formatter: entryDateFormatter): \(entry.title!)", destination: EntryView(title: entry.title!, text: entry.text ?? "", inspiration: entry.inspiration ?? "", date: entry.date!))
                 }.onDelete(perform: deleteItems)
             }
             .navigationTitle("entries-title")
             .listStyle(GroupedListStyle())
             .accessibilityScrollAction { edge in /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Code@*/ /*@END_MENU_TOKEN@*/  }
+            .alert(isPresented: $showingAlert){
+                Alert(title: Text("err-save-title"), message: Text("err-save-text"), dismissButton: .default(Text("err-save-btn")))
+            }
         }
      }
     
@@ -37,16 +41,13 @@ struct EntriesView: View {
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                showingAlert = true
             }
         }
     }
 }
 
-private let itemFormatter: DateFormatter = {
+private let entryDateFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .long 
     formatter.timeStyle = .none

@@ -76,29 +76,33 @@ struct InspirationView: View {
         "insp-r06",
     ]
     
-    @State private var writeInspired = false
-    
+    @State private var writeInspiredA = false
+    @State private var writeInspiredB = false
+    @State private var writeInspiredC = false
+
+    @State private var selectedLink: String? = nil
+
     var body: some View {
         NavigationView{
             List {
                 Section(header: InspirationHeader(symbol: "heart", name: LocalizedStringKey("insp-sect-u"))) {
                     ForEach (understandYourselfInspirations, id: \.self) { inspiration in
-                        NavigationLink(LocalizedStringKey(inspiration), destination: WriteInspiredView(inspiration: inspiration, showSelf: $writeInspired), isActive: $writeInspired)
+                        NavigationLink(LocalizedStringKey(inspiration), destination: WriteInspiredView(inspirationKey: inspiration, selectedLink: $selectedLink), tag: inspiration, selection: $selectedLink)
                     }
                 }
                 Section(header: InspirationHeader(symbol: "leaf", name: LocalizedStringKey("insp-sect-g"))) {
                     ForEach (yourGrowth, id: \.self) { inspiration in
-                        NavigationLink(LocalizedStringKey(inspiration), destination: WriteInspiredView(inspiration: inspiration, showSelf: $writeInspired), isActive: $writeInspired)
-                   }
+                        NavigationLink(LocalizedStringKey(inspiration), destination: WriteInspiredView(inspirationKey: inspiration, selectedLink: $selectedLink), tag: inspiration, selection: $selectedLink)
+                  }
                 }
                 Section(header: InspirationHeader(symbol: "tornado", name: LocalizedStringKey("insp-sect-b" ))) {
                     ForEach (findYourBalance, id: \.self) { inspiration in
-                        NavigationLink(LocalizedStringKey(inspiration), destination: WriteInspiredView(inspiration: inspiration, showSelf: $writeInspired), isActive: $writeInspired)
+                        NavigationLink(LocalizedStringKey(inspiration), destination: WriteInspiredView(inspirationKey: inspiration, selectedLink: $selectedLink), tag: inspiration, selection: $selectedLink)
                    }
                 }
                 Section(header: InspirationHeader(symbol: "person.2", name: LocalizedStringKey("insp-sect-r"))) {
                     ForEach (relationshipsWithOthers, id: \.self) { inspiration in
-                        NavigationLink(LocalizedStringKey(inspiration), destination: WriteInspiredView(inspiration: inspiration, showSelf: $writeInspired), isActive: $writeInspired)
+                        NavigationLink(LocalizedStringKey(inspiration), destination: WriteInspiredView(inspirationKey: inspiration, selectedLink: $selectedLink), tag: inspiration, selection: $selectedLink)
                     }
                 }
             }

@@ -7,7 +7,8 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @State var preferredColorScheme: ColorScheme? = nil
+    @ObservedObject var userSettings: UserSettings
+
     var body: some View {
     VStack {
         Text("settings").fontWeight(.bold)
@@ -18,24 +19,24 @@ struct SettingsView: View {
                 Text("settings-colour").fontWeight(.bold)
             }
             Button(action: {
-                preferredColorScheme = .light
+                userSettings.colorScheme = .light
             }) {
                 HStack {
                     Text("light-schema")
                     Spacer()
-                    if preferredColorScheme == .light {
+                    if userSettings.colorScheme == .light {
                         selectedImage
                     }
                 }
             }
 
             Button(action: {
-                preferredColorScheme = .dark
+                userSettings.colorScheme = .dark
             }) {
                 HStack {
                     Text("dark-schema")
                     Spacer()
-                    if preferredColorScheme == .dark {
+                    if userSettings.colorScheme == .dark {
                         selectedImage
                     }
                 }
@@ -50,7 +51,7 @@ struct SettingsView: View {
             }
         }
         .listStyle(InsetGroupedListStyle())
-        .preferredColorScheme(preferredColorScheme)
+        .preferredColorScheme(userSettings.colorScheme)
         .navigationBarTitle("settings")
     }
     }
@@ -60,8 +61,9 @@ struct SettingsView: View {
     }
 }
 struct SettingsView_Previews: PreviewProvider {
+    @State static var userSettings = UserSettings()
     static var previews: some View {
-        SettingsView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        SettingsView(userSettings: userSettings).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 

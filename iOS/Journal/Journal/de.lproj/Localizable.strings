@@ -28,10 +28,15 @@
 
 "your-prompts"="Deine Eingabeaufforderungen";
 
+"err-save-title"="Fehler beim Abspeichern";
+"err-save-text"="Versuhe noch mal";
+"err-save-btn"="OK";
+
 "insp-sect-u"="Verstehe dich";
 "insp-sect-g"="Dein Wachstum";
 "insp-sect-b"="Finde dein Gleichgewicht";
 "insp-sect-r"="Beziehungen zu Anderen";
+
 "insp-u01"="Nenne die drei größten Prioritäten in deinem Leben.";
 "insp-u02"="Was sind deine größten Ängste?";
 "insp-u03"="Was würdest du tun, wenn dir drei Wünche gewährt würden?";
