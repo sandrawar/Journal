@@ -29,6 +29,10 @@
 
 "your-prompts"="Inspiracje";
 
+"data-clear-title"="Czyść wpis";
+"data-clear-message"="Na pewno?";
+"data-clear-confirm"="Tak, wyczyść";
+
 "err-save-title"="Błąd podczas zapisu";
 "err-save-text"="Spróbuj ponownie";
 "err-save-btn"="OK";

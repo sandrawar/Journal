@@ -15,8 +15,9 @@ struct WriteInspiredView: View {
     @State var text: String = ""
     @State var date: Date = Date()
     @Binding var selectedLink: String?
-    @State private var showingAlert = false
-    
+    @State private var showingSaveErrorAlert = false
+    @State private var showingResetAlert = false
+
     let titleLimit = 60
        
     var body: some View {
@@ -44,40 +45,46 @@ struct WriteInspiredView: View {
                 Section(){
                     DatePicker(selection: $date, label: { Text("form-date") })
                 }
-                Button(action: {
-                    let newItem = Entry(context: viewContext)
-                    newItem.date = date
-                    newItem.title = title
-                    newItem.text = text
-                    newItem.inspiration = NSLocalizedString(inspirationKey, comment: "")
-                    inspirationKey = ""
-                    title = ""
-                    text = ""
-                    date = Date()
-                    
-                    do {
-                        try viewContext.save()
-                        self.selectedLink = nil
-                    } catch {
-                        viewContext.delete(newItem)
-                        showingAlert = true
-                    }
-                }, label: {
-                    HStack {
-                        Spacer()
-                        Text("save-button")
-                        Spacer()
-                    }
-                })
-                .disabled(title.isEmpty || text.isEmpty)
-                .alert(isPresented: $showingAlert){
-                    Alert(title: Text("err-save-title"), message: Text("err-save-text"), dismissButton: .default(Text("err-save-btn"), action: {
-                        self.selectedLink = nil
-                    }))
-                }
             }
             .navigationTitle("view-title-inspired-write")
+            .toolbar(content: {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Clear") {
+                        showingResetAlert = true
+                     }
+                    .disabled(title.isEmpty && text.isEmpty)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Save") {
+                        let newItem = Entry(context: viewContext)
+                        newItem.date = date
+                        newItem.title = title
+                        newItem.text = text
+                        newItem.inspiration = NSLocalizedString(inspirationKey, comment: "")
+
+                        do {
+                            try viewContext.save()
+                            self.title = ""
+                            self.text = ""
+                            self.date = Date()
+                        } catch {
+                            viewContext.delete(newItem)
+                            showingSaveErrorAlert = true
+                        }
+                     }
+                    .disabled(title.isEmpty || text.isEmpty)
+                }
+            })
         }
+        .alert(isPresented: $showingSaveErrorAlert){
+            Alert(title: Text("err-save-title"), message: Text("err-save-text"), dismissButton: .default(Text("err-save-btn")))
+        }
+        .alert(isPresented: $showingResetAlert, content: {
+            Alert(title: Text("data-clear-title"), message: Text("data-clear-message?"), primaryButton: .cancel(), secondaryButton: .destructive(Text("data-clear-confirm"), action: {
+                self.title = ""
+                self.text = ""
+                self.date = Date()
+            }))})
     }
 
     //Function to keep text length in limits

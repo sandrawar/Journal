@@ -29,6 +29,10 @@
 
 "your-prompts"="Your prompts";
 
+"data-clear-title"="Clear entry";
+"data-clear-message"="Are you sure?";
+"data-clear-confirm"="Yes, reset it";
+
 "err-save-title"="Save failed";
 "err-save-text"="Try again";
 "err-save-btn"="OK";
