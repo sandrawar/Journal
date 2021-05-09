@@ -29,7 +29,6 @@ struct SettingsView: View {
                     }
                 }
             }
-
             Button(action: {
                 userSettings.colorScheme = .dark
             }) {
@@ -41,6 +40,18 @@ struct SettingsView: View {
                     }
                 }
             }
+            Button(action: {
+                userSettings.colorScheme = .none
+            }) {
+                HStack {
+                    Text("system-scheme")
+                    Spacer()
+                    if userSettings.colorScheme == .none {
+                        selectedImage
+                    }
+                }
+            }
+
             Spacer()
             Link(destination: URL(string: UIApplication.openSettingsURLString)!){
                 HStack {

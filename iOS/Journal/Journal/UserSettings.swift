@@ -9,7 +9,7 @@ import SwiftUI
 class UserSettings: ObservableObject {
     @Published var colorScheme: ColorScheme? {
         didSet {
-            var colorSchemeName = ""
+            var colorSchemeName = "none"
             if self.colorScheme == .dark{
                 colorSchemeName = "dark"
             }
@@ -22,7 +22,7 @@ class UserSettings: ObservableObject {
     }
     
     init() {
-        var savedColorScheme : ColorScheme? = nil
+        var savedColorScheme : ColorScheme? = .none
         let colorSchemeName = UserDefaults.standard.object(forKey: "colorScheme") as? String
         if colorSchemeName == "dark"{
             savedColorScheme = .dark
