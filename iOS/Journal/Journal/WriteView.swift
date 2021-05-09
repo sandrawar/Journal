@@ -83,7 +83,7 @@ struct WriteView: View {
             Alert(title: Text("err-save-title"), message: Text("err-save-text"), dismissButton: .default(Text("err-save-btn")))
         }
         .alert(isPresented: $showingResetAlert, content: {
-            Alert(title: Text("data-clear-title"), message: Text("data-clear-message?"), primaryButton: .cancel(), secondaryButton: .destructive(Text("data-clear-confirm"), action: {
+            Alert(title: Text("data-clear-title"), message: Text("data-clear-message"), primaryButton: .cancel(), secondaryButton: .destructive(Text("data-clear-confirm"), action: {
                 self.title = ""
                 self.text = ""
                 self.date = Date()

@@ -29,9 +29,9 @@
 
 "your-prompts"="Deine Eingabeaufforderungen";
 
-"data-clear-title"="Czyść wpis";
-"data-clear-message"="Na pewno?";
-"data-clear-confirm"="Tak, wyczyść";
+"data-clear-title"="Loesche";
+"data-clear-message"="Siecher?";
+"data-clear-confirm"="Ja, loesche";
 
 "err-save-title"="Fehler beim Abspeichern";
 "err-save-text"="Versuhe noch mal";
